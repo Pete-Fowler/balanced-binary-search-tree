@@ -1,4 +1,4 @@
-const Node = require("./Node.js");
+const Node = require("../modules/Node.js");
 
 const node = new Node("data");
 
