@@ -11,4 +11,19 @@ describe("Tree", () => {
     expect(tree.array).toEqual([1, 2, 3, 4, 5]);
     expect(tree.root).toBe(3);
   });
+  test("buildTree creates tree", () => {
+    expect(node.buildTree).toBe({
+      data: 3,
+      left: {
+        data: 2,
+        left: 1,
+        right: null,
+      },
+      right: {
+        data: 4,
+        left: null,
+        right: 5,
+      },
+    });
+  });
 });
