@@ -4,6 +4,11 @@ class Tree {
     this.root = Math.ceil(array.length / 2);
   }
 
+  buildTree(array) {
+    const middle = this.array;
+    
+  }
+
   prettyPrint(node, prefix = "", isLeft = true) {
     if (node.right !== null) {
       prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
