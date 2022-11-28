@@ -12,7 +12,7 @@ describe("Tree", () => {
     expect(tree.root).toBe(3);
   });
   test("buildTree creates tree", () => {
-    expect(node.buildTree).toBe({
+    expect(tree.buildTree).toEqual({
       data: 3,
       left: {
         data: 2,
