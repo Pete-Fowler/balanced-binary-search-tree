@@ -6,6 +6,7 @@ export default class Tree {
     const arr = Array.from(set);
     arr.sort();
     this.array = arr;
+    this.root = this.buildTree(this.array);
   }
 
   buildTree(array = this.array, start = 0, end = this.array.length - 1) {
@@ -20,7 +21,7 @@ export default class Tree {
     return root;
   }
 
-  prettyPrint(node, prefix = "", isLeft = true) {
+  prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node.right !== null) {
       this.prettyPrint(
         node.right,
