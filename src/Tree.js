@@ -36,21 +36,16 @@ export default class Tree {
   }
 
   insert(value, node = this.root) {
-    if (value < node.data) {
-      if (node.left === null) {
-        node.left = new Node(value);
-        return;
-      } else {
-        return this.insert(value, node.left);
-      }
-    } else {
-      if (node.right === null) {
-        node.right = new Node(value);
-        return;
-      } else {
-        return this.insert(value, node.right);
-      }
+    if (node === null) {
+      node = new Node(value);
+      return node;
     }
+    if (value < node.data) {
+      node.left = this.insert(value, node.left);
+    } else if (value > node.data) {
+      node.right = this.insert(value, node.right);
+    }
+    return node;
   }
 
   delete(node) {}
