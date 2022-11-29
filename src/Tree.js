@@ -4,7 +4,7 @@ export default class Tree {
   constructor(array) {
     const set = new Set(array);
     const arr = Array.from(set);
-    arr.sort();
+    arr.sort((a, b) => a - b);
     this.array = arr;
     this.root = this.buildTree(this.array);
   }
@@ -12,7 +12,7 @@ export default class Tree {
   buildTree(array = this.array, start = 0, end = this.array.length - 1) {
     if (start > end) return null;
 
-    let mid = (start + end) / 2;
+    let mid = parseInt((start + end) / 2);
     const root = new Node(array[mid]);
 
     root.left = this.buildTree(array, start, mid - 1);
@@ -35,7 +35,7 @@ export default class Tree {
     }
   }
 
-  insert(node) {}
+  insert(value, node = this.root) {}
 
   delete(node) {}
 

@@ -1,4 +1,5 @@
 import Tree from "./Tree.js";
 
-const t = new Tree([6, 7, 1, 2, 3, 4, 5]);
+const t = new Tree([2, 4, 6, 8, 10]);
+console.log(t.array, t.root);
 t.prettyPrint();

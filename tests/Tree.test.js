@@ -30,6 +30,39 @@ let treeObj = {
     },
   },
 };
+let treePlusEight = {
+  data: 4,
+  left: {
+    data: 2,
+    left: {
+      data: 1,
+      left: null,
+      right: null,
+    },
+    right: {
+      data: 3,
+      left: null,
+      right: null,
+    },
+  },
+  right: {
+    data: 6,
+    left: {
+      data: 5,
+      left: null,
+      right: null,
+    },
+    right: {
+      data: 7,
+      right: {
+        data: 8,
+        left: null,
+        right: null,
+      },
+      left: null,
+    },
+  },
+};
 
 describe("Tree", () => {
   beforeEach(() => {
@@ -56,6 +89,11 @@ describe("Tree", () => {
         right: null,
       },
     });
-    expect;
+    expect(tree.find(9)).toEqual(null);
+  });
+  it("Insert adds node at proper location", () => {
+    // expect(tree.insert(8).toEqual(treePlusEight));
+    tree = new Tree([2, 4, 6, 8, 10]);
+    tree.prettyPrint();
   });
 });
