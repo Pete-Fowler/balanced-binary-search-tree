@@ -33,4 +33,10 @@ export default class Tree {
       this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
   }
+
+  insert(node) {}
+
+  delete(node) {}
+
+  find(node) {}
 }
