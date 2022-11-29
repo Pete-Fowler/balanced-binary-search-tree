@@ -6,7 +6,6 @@ export default class Tree {
     const arr = Array.from(set);
     arr.sort();
     this.array = arr;
-    this.root = null;
   }
 
   buildTree(array = this.array, start = 0, end = this.array.length - 1) {
