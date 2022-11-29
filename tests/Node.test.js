@@ -1,4 +1,4 @@
-const Node = require("../modules/Node.js");
+import Node from "..src/Node.js";
 
 const node = new Node("data");
 

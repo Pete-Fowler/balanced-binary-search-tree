@@ -1,4 +1,4 @@
-const Tree = require("../modules/Tree.js");
+import Tree from "../src/Tree.js";
 
 let tree;
 

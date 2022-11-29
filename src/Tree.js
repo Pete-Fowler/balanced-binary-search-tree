@@ -1,4 +1,4 @@
-class Tree {
+export default class Tree {
   constructor(array) {
     this.array = array;
     this.root = Math.ceil(array.length / 2);
@@ -6,7 +6,6 @@ class Tree {
 
   buildTree(array) {
     const middle = this.array;
-    
   }
 
   prettyPrint(node, prefix = "", isLeft = true) {
@@ -19,5 +18,3 @@ class Tree {
     }
   }
 }
-
-module.exports = Tree;
