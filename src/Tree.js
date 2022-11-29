@@ -39,5 +39,14 @@ export default class Tree {
 
   delete(node) {}
 
-  find(node) {}
+  find(data, node = this.root) {
+    if (node.data === data) return node;
+    if (node.left === null && node.right === null) return null;
+
+    if (data < node.data) {
+      return this.find(data, node.left);
+    } else {
+      return this.find(data, node.right);
+    }
+  }
 }
