@@ -1,7 +1,7 @@
 export default class Tree {
   constructor(array) {
     this.array = array;
-    this.root = Math.ceil(array.length / 2);
+    this.root = buildTree(array);
   }
 
   buildTree(array) {

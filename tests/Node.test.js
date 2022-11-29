@@ -1,4 +1,4 @@
-import Node from "..src/Node.js";
+import Node from "../src/Node.js";
 
 const node = new Node("data");
 
