@@ -51,9 +51,9 @@ export default class Tree {
   delete(value, node = this.root) {
     if (node === null) return node;
 
-    if (value < node.value) {
+    if (value < node.data) {
       node.left = this.delete(value, node.left);
-    } else if (value > node.value) {
+    } else if (value > node.data) {
       node.right = this.delete(value, node.right);
     } else {
       if (node.left === null) {
@@ -61,12 +61,10 @@ export default class Tree {
       } else if (node.right === null) {
         return node.left;
       }
-
       node.value = successor(node.right);
 
-      node.right = this.delete(node.value, node.right);
+      node.right = this.delete(node.data, node.right);
     }
-
     return node;
 
     function successor(node) {
@@ -81,6 +79,7 @@ export default class Tree {
   /*
 Must handle no child, single child, and double child
 */
+
   find(data, node = this.root) {
     if (node.data === data) return node;
     if (node.left === null && node.right === null) return null;
