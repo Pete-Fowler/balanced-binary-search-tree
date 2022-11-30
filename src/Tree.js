@@ -50,7 +50,6 @@ export default class Tree {
 
   delete(value, node = this.root) {
     if (node === null) return node;
-
     if (value < node.data) {
       node.left = this.delete(value, node.left);
     } else if (value > node.data) {
@@ -61,16 +60,16 @@ export default class Tree {
       } else if (node.right === null) {
         return node.left;
       }
-      node.value = successor(node.right);
+      node.data = successor(node.right);
 
       node.right = this.delete(node.data, node.right);
     }
     return node;
 
     function successor(node) {
-      let min = node.value;
+      let min = node.data;
       while (node.left !== null) {
-        min = node.left.value;
+        min = node.left.data;
         node = node.left;
       }
       return min;
