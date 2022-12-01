@@ -111,56 +111,36 @@ export default class Tree {
     return visited;
   }
 
-  inOrder(callback = false, node = this.root, stack = [], visited = []) {
-    // Base case
+  inOrder(callback = false, node = this.root, visited = []) {
     if (node === null) return node;
 
-    // If next node to left exists,
-    // add node to stack for later visitation and recurse down the tree
-    if (node.left !== null) {
-      stack.push(node);
-      return this.inOrder(callback, node.left, stack, visited);
-      // Or it is a leaf node, and we visit it
-      // and then visit the parent from the stack
-      // and then recurse the parent's right subtree
-    } else {
-      callback ? callback(node) : visited.push(node.data);
-      if (stack.length > 0) {
-        const parent = stack.pop();
-        callback ? callback(parent) : visited.push(parent.data);
-        return this.inOrder(callback, parent.right, stack, visited);
-      }
-    }
+    this.inOrder(callback, node.left, visited);
+
+    callback ? callback(node) : visited.push(node.data);
+
+    this.inOrder(callback, node.right, visited);
+
     return callback ? "" : visited;
   }
 
-  preOrder(callback = false, node = this.root, stack = [], visited = []) {
+  preOrder(callback = false, node = this.root, visited = []) {
     if (node === null) return;
 
-    // Visit the root and save the node to the right in stack
     callback ? callback(node) : visited.push(node.data);
-    if (node.right !== null) stack.push(node.right);
 
-    // Traverse left subtree until hitting the end
-    if (node.left !== null) {
-      return this.preOrder(callback, node.left, stack, visited);
-      // Then visit the node and then traverse the right subtree
-    } else {
-      // callback ? callback(node) : visited.push(node.data);
-      if (stack.length > 0) {
-        const right = stack.pop();
-        this.preOrder(callback, right, stack, visited);
-      }
-      return callback ? "" : visited;
-    }
+    this.preOrder(callback, node.left, visited);
+
+    this.preOrder(callback, node.right, visited);
+
+    return callback ? "" : visited;
   }
 
-  postOrder(callback = false, node = this.root, stack = [], visited = []) {
+  postOrder(callback = false, node = this.root, visited = []) {
     if (node === null) return;
 
-    this.postOrder(callback, node.left, stack, visited);
+    this.postOrder(callback, node.left, visited);
 
-    this.postOrder(callback, node.right, stack, visited);
+    this.postOrder(callback, node.right, visited);
 
     callback ? callback(node) : visited.push(node.data);
 
