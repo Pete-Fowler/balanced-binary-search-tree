@@ -217,4 +217,7 @@ describe("Tree", () => {
     expect(spy).toHaveBeenNthCalledWith(7, 7);
     spy.mockRestore();
   });
+  it("preOrder returns an array of values if given no callback", () => {
+    expect(tree.preOrder()).toEqual([4, 2, 1, 3, 6, 5, 7]);
+  });
 });
