@@ -179,8 +179,19 @@ describe("Tree", () => {
   });
   it("levelOrder traverses in level order and prints all nodes with console log callback", () => {
     const spy = jest.spyOn(console, "log");
-
-    tree.levelOrder();
-    expect(spy).toHaveBeenCalledWith("4 ", "2 ", "6 ", "1 ", "3 ", "5 ", "7 ");
+    function cb(node) {
+      console.log(node.data);
+    }
+    tree.levelOrder(cb);
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(7);
+    expect(spy).toHaveBeenNthCalledWith(1, 4);
+    expect(spy).toHaveBeenNthCalledWith(2, 2);
+    expect(spy).toHaveBeenNthCalledWith(3, 6);
+    expect(spy).toHaveBeenNthCalledWith(4, 1);
+    expect(spy).toHaveBeenNthCalledWith(5, 3);
+    expect(spy).toHaveBeenNthCalledWith(6, 5);
+    expect(spy).toHaveBeenNthCalledWith(7, 7);
+    spy.mockRestore();
   });
 });
