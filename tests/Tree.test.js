@@ -271,8 +271,7 @@ describe("Tree", () => {
       expect(tree.depth()).toEqual(0);
     });
     it("Returns 2 for node of value 1", () => {
-      const node = tree.find(1);
-      expect(tree.depth(node)).toEqual(2);
+      expect(tree.depth(1)).toEqual(2);
     });
   });
 });

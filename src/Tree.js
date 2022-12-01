@@ -151,7 +151,17 @@ export default class Tree {
     if (node === null) return -1;
 
     return Math.max(this.height(node.left), this.height(node.right)) + 1;
-    // height of a node is the height of all the lower nodes + 1
+  }
+
+  depth(value, node = this.root, count = 0) {
+    if (node === null) return;
+    if (node.value === value) return count;
+    console.log(node);
+    if (value < node.value) {
+      return this.depth(value, node.left, count + 1);
+    } else {
+      return this.depth(value, node.right, count + 1);
+    }
   }
   /*
 Write a height function which accepts a node and returns its height. Height is defined as the number of edges in longest path from a given node to a leaf node.
