@@ -97,4 +97,11 @@ export default class Tree {
       return this.find(data, node.right);
     }
   }
+
+  levelOrder(callback, node = this.root) {
+    const queue = [];
+    callback(node);
+    queue.push(node.left, node.right);
+    return this.levelOrder(queue.shift());
+  }
 }
