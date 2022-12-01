@@ -135,7 +135,7 @@ export default class Tree {
   }
 
   preOrder(callback = false, node = this.root, stack = [], visited = []) {
-    if (node === null) return node;
+    if (node === null) return;
 
     // Visit the root and save the node to the right in stack
     callback ? callback(node) : visited.push(node.data);
@@ -147,8 +147,10 @@ export default class Tree {
       // Then visit the node and then traverse the right subtree
     } else {
       callback ? callback(node) : visited.push(node.data);
-      const right = stack.pop();
-      this.preOrder(callback, right, stack, visited);
+      if (stack.length > 0) {
+        const right = stack.pop();
+        this.preOrder(callback, right, stack, visited);
+      }
       return callback ? "" : visited;
     }
   }
