@@ -198,7 +198,7 @@ describe("Tree", () => {
     expect(tree.levelOrder()).toEqual([4, 2, 6, 1, 3, 5, 7]);
   });
   it("inOrder returns an array of values if given no callback", () => {
-    expect(tree.levelOrder()).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(tree.inOrder()).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
   it("inOrder traverses appropriately", () => {
     const spy = jest.spyOn(console, "log");
