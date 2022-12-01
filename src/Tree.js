@@ -111,8 +111,23 @@ export default class Tree {
     return visited;
   }
 
-  inorder(callback = false, node = this.root) {
-    
+  inOrder(callback = false, node = this.root, stack = [], visited = []) {
+    // Base case
+    debugger;
+    if (node === null) return node;
+
+    if (node.left !== null) {
+      stack.push(node);
+      return this.inOrder(callback, node.left, stack, visited);
+    } else {
+      callback ? callback(node) : visited.push(node.data);
+      if (stack.length > 0) {
+        const parent = stack.pop();
+        callback ? callback(parent) : visited.push(parent);
+        return this.inOrder(callback, parent.right, stack, visited);
+      }
+    }
+    return callback ? "" : visited;
   }
 
   //   left root right - Inorder tree walk: Nodes from the left subtree get visited first, followed by the root node and right subtree.
