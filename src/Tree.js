@@ -98,15 +98,16 @@ export default class Tree {
     }
   }
 
-  levelOrder(callback, node = this.root, queue = []) {
+  levelOrder(callback = false, node = this.root, queue = [], visited = []) {
     if (node === null) return;
 
-    const visited = [];
-
-    callback(node);
+    callback ? callback(node) : visited.push(node.data);
     queue.push(node.left, node.right);
-
     const next = queue.shift();
-    return this.levelOrder(callback, next, queue);
+    
+    this.levelOrder(callback, next, queue, visited);
+
+    if (callback) return;
+    return visited;
   }
 }
