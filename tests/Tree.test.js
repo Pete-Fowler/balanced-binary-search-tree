@@ -177,4 +177,10 @@ describe("Tree", () => {
     tree.delete(4);
     expect(tree.root).toEqual(treeMinusFiveAndFour);
   });
+  it("levelOrder traverses in level order and prints all nodes with console log callback", () => {
+    const spy = jest.spyOn(console, "log");
+
+    tree.levelOrder();
+    expect(spy).toHaveBeenCalledWith("4 ", "2 ", "6 ", "1 ", "3 ", "5 ", "7 ");
+  });
 });
