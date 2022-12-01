@@ -113,17 +113,21 @@ export default class Tree {
 
   inOrder(callback = false, node = this.root, stack = [], visited = []) {
     // Base case
-    debugger;
     if (node === null) return node;
 
+    // If next node to left exists,
+    // add node to stack for later visitation and recurse down the tree
     if (node.left !== null) {
       stack.push(node);
       return this.inOrder(callback, node.left, stack, visited);
+      // Or it is a leaf node, and we visit it
+      // and then visit the parent from the stack
+      // and then recurse the parent's right subtree
     } else {
       callback ? callback(node) : visited.push(node.data);
       if (stack.length > 0) {
         const parent = stack.pop();
-        callback ? callback(parent) : visited.push(parent);
+        callback ? callback(parent) : visited.push(parent.data);
         return this.inOrder(callback, parent.right, stack, visited);
       }
     }
