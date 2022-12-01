@@ -146,7 +146,7 @@ export default class Tree {
       return this.preOrder(callback, node.left, stack, visited);
       // Then visit the node and then traverse the right subtree
     } else {
-      callback ? callback(node) : visited.push(node.data);
+      // callback ? callback(node) : visited.push(node.data);
       if (stack.length > 0) {
         const right = stack.pop();
         this.preOrder(callback, right, stack, visited);
