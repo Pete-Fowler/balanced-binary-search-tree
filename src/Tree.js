@@ -155,6 +155,18 @@ export default class Tree {
     }
   }
 
+  postOrder(callback = false, node = this.root, stack = [], visited = []) {
+    if (node === null) return;
+
+    this.postOrder(callback, node.left, stack, visited);
+
+    this.postOrder(callback, node.right, stack, visited);
+
+    callback ? callback(node) : visited.push(node.data);
+
+    return callback ? "" : visited;
+  }
+
   //   left root right - Inorder tree walk: Nodes from the left subtree get visited first, followed by the root node and right subtree.
   // root left right Preorder tree walk: The root node gets visited first, followed by left and right subtrees.
   // left right root Postorder tree walk: Nodes from the left subtree get visited first, followed by the right subtree, and finally the root.

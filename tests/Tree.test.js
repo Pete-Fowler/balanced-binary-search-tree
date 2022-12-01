@@ -237,4 +237,24 @@ describe("Tree", () => {
     expect(spy).toHaveBeenNthCalledWith(7, 7);
     spy.mockRestore();
   });
+  it("postOrder returns an array of values if given no callback", () => {
+    expect(tree.postOrder()).toEqual([1, 3, 2, 4, 5, 7, 6]);
+  });
+  it("preOrder traverses appropriately", () => {
+    const spy = jest.spyOn(console, "log");
+    function cb(node) {
+      console.log(node.data);
+    }
+    tree.postOrder(cb);
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(7);
+    expect(spy).toHaveBeenNthCalledWith(1, 4);
+    expect(spy).toHaveBeenNthCalledWith(2, 2);
+    expect(spy).toHaveBeenNthCalledWith(3, 1);
+    expect(spy).toHaveBeenNthCalledWith(4, 3);
+    expect(spy).toHaveBeenNthCalledWith(5, 6);
+    expect(spy).toHaveBeenNthCalledWith(6, 5);
+    expect(spy).toHaveBeenNthCalledWith(7, 7);
+    spy.mockRestore();
+  });
 });
