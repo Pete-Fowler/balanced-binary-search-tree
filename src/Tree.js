@@ -49,17 +49,28 @@ export default class Tree {
   }
 
   delete(value, node = this.root) {
+    // Base Case: If the tree is empty, returning node returns
+    // the previous node (null) and stops recursion
     if (node === null) return node;
+
+    // Otherwise, recurse down the tree
     if (value < node.data) {
       node.left = this.delete(value, node.left);
     } else if (value > node.data) {
       node.right = this.delete(value, node.right);
+
+      // Otherwise, value is the same as node's value,
+      // then this is the node to be deleted
     } else {
+      // node with only one child or no child
       if (node.left === null) {
         return node.right;
       } else if (node.right === null) {
         return node.left;
       }
+
+      // node with two children: Get the inorder
+      // successor (smallest in the right subtree)
       node.data = successor(node.right);
 
       node.right = this.delete(node.data, node.right);
@@ -75,9 +86,6 @@ export default class Tree {
       return min;
     }
   }
-  /*
-Must handle no child, single child, and double child
-*/
 
   find(data, node = this.root) {
     if (node.data === data) return node;

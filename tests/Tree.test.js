@@ -64,6 +64,53 @@ let treePlusEight = {
     },
   },
 };
+let treeMinusFive = {
+  data: 4,
+  left: {
+    data: 2,
+    left: {
+      data: 1,
+      left: null,
+      right: null,
+    },
+    right: {
+      data: 3,
+      left: null,
+      right: null,
+    },
+  },
+  right: {
+    data: 6,
+    left: null,
+    right: {
+      data: 7,
+      right: null,
+      left: null,
+    },
+  },
+};
+let treeMinusFiveAndFour = {
+  data: 6,
+  left: {
+    data: 2,
+    left: {
+      data: 1,
+      left: null,
+      right: null,
+    },
+    right: {
+      data: 3,
+      left: null,
+      right: null,
+    },
+  },
+  right: {
+    data: 7,
+    left: null,
+    right: null,
+  },
+};
+
 let tree2Obj = {
   data: 6,
   left: {
@@ -123,5 +170,11 @@ describe("Tree", () => {
     expect(tree.root).toEqual(treePlusEight);
     tree2.insert(7);
     expect(tree2.root).toEqual(tree2Obj);
+  });
+  it("Delete removes appropriate node", () => {
+    tree.delete(5);
+    expect(tree.root).toEqual(treeMinusFive);
+    tree.delete(4);
+    expect(tree.root).toEqual(treeMinusFiveAndFour);
   });
 });
