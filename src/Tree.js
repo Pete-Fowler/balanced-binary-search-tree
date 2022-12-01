@@ -99,9 +99,17 @@ export default class Tree {
   }
 
   levelOrder(callback, node = this.root) {
+    if (node === null) return;
+
     const queue = [];
-    callback(node);
+    const visited = [];
+
+    // callback(node);
+    console.log(node.data + " ");
+
     queue.push(node.left, node.right);
-    return this.levelOrder(queue.shift());
+
+    const next = queue.shift();
+    return this.levelOrder(callback, next);
   }
 }
