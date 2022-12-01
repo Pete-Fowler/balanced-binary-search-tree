@@ -257,4 +257,22 @@ describe("Tree", () => {
     expect(spy).toHaveBeenNthCalledWith(7, 4);
     spy.mockRestore();
   });
+  describe("Height", () => {
+    it("Returns the appropriate value for root", () => {
+      expect(tree.height()).toEqual(2);
+    });
+    it("Returns 1 for node of value 2", () => {
+      const node = tree.find(2);
+      expect(tree.height(node)).toEqual(1);
+    });
+  });
+  describe("Depth", () => {
+    it("Returns 0 for root", () => {
+      expect(tree.depth()).toEqual(0);
+    });
+    it("Returns 2 for node of value 1", () => {
+      const node = tree.find(1);
+      expect(tree.depth(node)).toEqual(2);
+    });
+  });
 });

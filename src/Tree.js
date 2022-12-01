@@ -147,7 +147,19 @@ export default class Tree {
     return callback ? "" : visited;
   }
 
-  //   left root right - Inorder tree walk: Nodes from the left subtree get visited first, followed by the root node and right subtree.
-  // root left right Preorder tree walk: The root node gets visited first, followed by left and right subtrees.
-  // left right root Postorder tree walk: Nodes from the left subtree get visited first, followed by the right subtree, and finally the root.
+  height(node = this.root) {
+    if (node === null) return -1;
+
+    return Math.max(this.height(node.left), this.height(node.right)) + 1;
+    // height of a node is the height of all the lower nodes + 1
+  }
+  /*
+Write a height function which accepts a node and returns its height. Height is defined as the number of edges in longest path from a given node to a leaf node.
+
+Write a depth function which accepts a node and returns its depth. Depth is defined as the number of edges in path from a given node to the tree’s root node.
+
+Write a isBalanced function which checks if the tree is balanced. A balanced tree is one where the difference between heights of left subtree and right subtree of every node is not more than 1.
+
+Write a rebalance function which rebalances an unbalanced tree. Tip: You’ll want to use a traversal method to provide a new array to the buildTree function.
+*/
 }
