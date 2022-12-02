@@ -301,10 +301,12 @@ describe("Tree", () => {
   });
   describe("reBalance", () => {
     it("Rebalances an unbalanced tree", () => {
-      tree.insert(100);
-      tree.insert(102);
-      tree.insert(104);
-      expect(tree.root.data).toBe(5);
+      const node = tree.find(7);
+      tree.insert(100, node);
+      tree.insert(102, node);
+      tree.insert(104, node);
+      tree.rebalance();
+      expect(tree.root.data).toEqual(5);
     });
   });
 });
