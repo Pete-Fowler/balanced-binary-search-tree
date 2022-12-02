@@ -164,7 +164,19 @@ export default class Tree {
     }
   }
 
-  isBalanced(node = this.root) {}
+  isBalanced(node = this.root) {
+    if (node === null) return true;
+    debugger;
+    const diff = this.height(node.left) - this.height(node.right);
+    if (diff >= -1 && diff <= 1) {
+      this.isBalanced(node.left);
+      this.isBalanced(node.right);
+    } else {
+      return false;
+    }
+    // check if left subtree height is within 1 of r subtree height
+    // do this again and again recursively down the tree
+  }
 
   rebalance(node = this.root) {}
   /*
