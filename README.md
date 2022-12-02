@@ -1,1 +1,2 @@
-# balanced-binary-search-tree
+# Summary
+This repository contains Node and Tree classes to create and explore a balanced binary search tree. The Tree methods will build a tree, search the tree for a value, insert a value, and delete a value. There are also methods to traverse the tree and execute a callback on the node for 
