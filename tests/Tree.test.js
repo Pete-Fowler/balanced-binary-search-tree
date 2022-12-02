@@ -280,4 +280,13 @@ describe("Tree", () => {
       expect(tree.depth(20)).toEqual("Not found");
     });
   });
+  describe("isBalanced", () => {
+    it("Returns true or false appropriately", () => {
+      expect(tree.isBalanced()).toEqual(true);
+      tree.insert(100);
+      tree.insert(101);
+      tree.insert(102);
+      expect(tree.isBalanced()).toEqual(false);
+    });
+  });
 });
