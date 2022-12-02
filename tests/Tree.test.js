@@ -177,85 +177,93 @@ describe("Tree", () => {
     tree.delete(4);
     expect(tree.root).toEqual(treeMinusFiveAndFour);
   });
-  it("levelOrder traverses in level order and prints all nodes with console log callback", () => {
-    const spy = jest.spyOn(console, "log");
-    function cb(node) {
-      console.log(node.data);
-    }
-    tree.levelOrder(cb);
-    expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(7);
-    expect(spy).toHaveBeenNthCalledWith(1, 4);
-    expect(spy).toHaveBeenNthCalledWith(2, 2);
-    expect(spy).toHaveBeenNthCalledWith(3, 6);
-    expect(spy).toHaveBeenNthCalledWith(4, 1);
-    expect(spy).toHaveBeenNthCalledWith(5, 3);
-    expect(spy).toHaveBeenNthCalledWith(6, 5);
-    expect(spy).toHaveBeenNthCalledWith(7, 7);
-    spy.mockRestore();
+  describe("levelOrder", () => {
+    it("Traverses in level order and prints all nodes", () => {
+      const spy = jest.spyOn(console, "log");
+      function cb(node) {
+        console.log(node.data);
+      }
+      tree.levelOrder(cb);
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(7);
+      expect(spy).toHaveBeenNthCalledWith(1, 4);
+      expect(spy).toHaveBeenNthCalledWith(2, 2);
+      expect(spy).toHaveBeenNthCalledWith(3, 6);
+      expect(spy).toHaveBeenNthCalledWith(4, 1);
+      expect(spy).toHaveBeenNthCalledWith(5, 3);
+      expect(spy).toHaveBeenNthCalledWith(6, 5);
+      expect(spy).toHaveBeenNthCalledWith(7, 7);
+      spy.mockRestore();
+    });
+    it("levelOrder returns an array of values if given no callback", () => {
+      expect(tree.levelOrder()).toEqual([4, 2, 6, 1, 3, 5, 7]);
+    });
   });
-  it("levelOrder returns an array of values if given no callback", () => {
-    expect(tree.levelOrder()).toEqual([4, 2, 6, 1, 3, 5, 7]);
+  describe("inOrder", () => {
+    it("Returns an array of values if given no callback", () => {
+      expect(tree.inOrder()).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    });
+    it("Traverses appropriately", () => {
+      const spy = jest.spyOn(console, "log");
+      function cb(node) {
+        console.log(node.data);
+      }
+      tree.inOrder(cb);
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(7);
+      expect(spy).toHaveBeenNthCalledWith(1, 1);
+      expect(spy).toHaveBeenNthCalledWith(2, 2);
+      expect(spy).toHaveBeenNthCalledWith(3, 3);
+      expect(spy).toHaveBeenNthCalledWith(4, 4);
+      expect(spy).toHaveBeenNthCalledWith(5, 5);
+      expect(spy).toHaveBeenNthCalledWith(6, 6);
+      expect(spy).toHaveBeenNthCalledWith(7, 7);
+      spy.mockRestore();
+    });
   });
-  it("inOrder returns an array of values if given no callback", () => {
-    expect(tree.inOrder()).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  describe("preOrder", () => {
+    it("preOrder returns an array of values if given no callback", () => {
+      expect(tree.preOrder()).toEqual([4, 2, 1, 3, 6, 5, 7]);
+    });
+    it("preOrder traverses appropriately", () => {
+      const spy = jest.spyOn(console, "log");
+      function cb(node) {
+        console.log(node.data);
+      }
+      tree.preOrder(cb);
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(7);
+      expect(spy).toHaveBeenNthCalledWith(1, 4);
+      expect(spy).toHaveBeenNthCalledWith(2, 2);
+      expect(spy).toHaveBeenNthCalledWith(3, 1);
+      expect(spy).toHaveBeenNthCalledWith(4, 3);
+      expect(spy).toHaveBeenNthCalledWith(5, 6);
+      expect(spy).toHaveBeenNthCalledWith(6, 5);
+      expect(spy).toHaveBeenNthCalledWith(7, 7);
+      spy.mockRestore();
+    });
   });
-  it("inOrder traverses appropriately", () => {
-    const spy = jest.spyOn(console, "log");
-    function cb(node) {
-      console.log(node.data);
-    }
-    tree.inOrder(cb);
-    expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(7);
-    expect(spy).toHaveBeenNthCalledWith(1, 1);
-    expect(spy).toHaveBeenNthCalledWith(2, 2);
-    expect(spy).toHaveBeenNthCalledWith(3, 3);
-    expect(spy).toHaveBeenNthCalledWith(4, 4);
-    expect(spy).toHaveBeenNthCalledWith(5, 5);
-    expect(spy).toHaveBeenNthCalledWith(6, 6);
-    expect(spy).toHaveBeenNthCalledWith(7, 7);
-    spy.mockRestore();
-  });
-  it("preOrder returns an array of values if given no callback", () => {
-    expect(tree.preOrder()).toEqual([4, 2, 1, 3, 6, 5, 7]);
-  });
-  it("preOrder traverses appropriately", () => {
-    const spy = jest.spyOn(console, "log");
-    function cb(node) {
-      console.log(node.data);
-    }
-    tree.preOrder(cb);
-    expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(7);
-    expect(spy).toHaveBeenNthCalledWith(1, 4);
-    expect(spy).toHaveBeenNthCalledWith(2, 2);
-    expect(spy).toHaveBeenNthCalledWith(3, 1);
-    expect(spy).toHaveBeenNthCalledWith(4, 3);
-    expect(spy).toHaveBeenNthCalledWith(5, 6);
-    expect(spy).toHaveBeenNthCalledWith(6, 5);
-    expect(spy).toHaveBeenNthCalledWith(7, 7);
-    spy.mockRestore();
-  });
-  it("postOrder returns an array of values if given no callback", () => {
-    expect(tree.postOrder()).toEqual([1, 3, 2, 5, 7, 6, 4]);
-  });
-  it("preOrder traverses appropriately", () => {
-    const spy = jest.spyOn(console, "log");
-    function cb(node) {
-      console.log(node.data);
-    }
-    tree.postOrder(cb);
-    expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledTimes(7);
-    expect(spy).toHaveBeenNthCalledWith(1, 1);
-    expect(spy).toHaveBeenNthCalledWith(2, 3);
-    expect(spy).toHaveBeenNthCalledWith(3, 2);
-    expect(spy).toHaveBeenNthCalledWith(4, 5);
-    expect(spy).toHaveBeenNthCalledWith(5, 7);
-    expect(spy).toHaveBeenNthCalledWith(6, 6);
-    expect(spy).toHaveBeenNthCalledWith(7, 4);
-    spy.mockRestore();
+  describe("postOrder", () => {
+    it("postOrder returns an array of values if given no callback", () => {
+      expect(tree.postOrder()).toEqual([1, 3, 2, 5, 7, 6, 4]);
+    });
+    it("postOrder traverses appropriately", () => {
+      const spy = jest.spyOn(console, "log");
+      function cb(node) {
+        console.log(node.data);
+      }
+      tree.postOrder(cb);
+      expect(spy).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledTimes(7);
+      expect(spy).toHaveBeenNthCalledWith(1, 1);
+      expect(spy).toHaveBeenNthCalledWith(2, 3);
+      expect(spy).toHaveBeenNthCalledWith(3, 2);
+      expect(spy).toHaveBeenNthCalledWith(4, 5);
+      expect(spy).toHaveBeenNthCalledWith(5, 7);
+      expect(spy).toHaveBeenNthCalledWith(6, 6);
+      expect(spy).toHaveBeenNthCalledWith(7, 4);
+      spy.mockRestore();
+    });
   });
   describe("Height", () => {
     it("Returns the appropriate value for root", () => {
@@ -284,7 +292,9 @@ describe("Tree", () => {
     it("Returns true or false appropriately", () => {
       expect(tree.isBalanced()).toEqual(true);
       tree.insert(100);
+      expect(tree.isBalanced()).toEqual(true);
       tree.insert(101);
+      expect(tree.isBalanced()).toEqual(false);
       tree.insert(102);
       expect(tree.isBalanced()).toEqual(false);
     });
