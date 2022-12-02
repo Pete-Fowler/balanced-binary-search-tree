@@ -299,4 +299,12 @@ describe("Tree", () => {
       expect(tree.isBalanced()).toEqual(false);
     });
   });
+  describe("reBalance", () => {
+    it("Rebalances an unbalanced tree", () => {
+      tree.insert(100);
+      tree.insert(102);
+      tree.insert(104);
+      expect(tree.root.data).toBe(5);
+    });
+  });
 });
