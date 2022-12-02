@@ -171,6 +171,7 @@ export default class Tree {
     if (diff >= -1 && diff <= 1) {
       this.isBalanced(node.left);
       this.isBalanced(node.right);
+      return true;
     } else {
       return false;
     }
