@@ -154,7 +154,7 @@ export default class Tree {
   }
 
   depth(value, node = this.root, count = 0) {
-    if (node === null) return;
+    if (node === null) return "Not found";
     if (node.data === value) return count;
 
     if (value < node.data) {

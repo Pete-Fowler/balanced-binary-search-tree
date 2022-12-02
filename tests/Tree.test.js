@@ -276,5 +276,8 @@ describe("Tree", () => {
     it("Returns 1 for node value of 6", () => {
       expect(tree.depth(6)).toEqual(1);
     });
+    it("Returns not found for nonincluded value", () => {
+      expect(tree.depth(20)).toEqual("Not found");
+    });
   });
 });
