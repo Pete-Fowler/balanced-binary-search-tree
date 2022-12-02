@@ -268,10 +268,13 @@ describe("Tree", () => {
   });
   describe("Depth", () => {
     it("Returns 0 for root", () => {
-      expect(tree.depth()).toEqual(0);
+      expect(tree.depth(4)).toEqual(0);
     });
     it("Returns 2 for node of value 1", () => {
       expect(tree.depth(1)).toEqual(2);
+    });
+    it("Returns 1 for node value of 6", () => {
+      expect(tree.depth(6)).toEqual(1);
     });
   });
 });

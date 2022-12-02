@@ -155,9 +155,9 @@ export default class Tree {
 
   depth(value, node = this.root, count = 0) {
     if (node === null) return;
-    if (node.value === value) return count;
-    console.log(node);
-    if (value < node.value) {
+    if (node.data === value) return count;
+
+    if (value < node.data) {
       return this.depth(value, node.left, count + 1);
     } else {
       return this.depth(value, node.right, count + 1);
