@@ -1,6 +1,6 @@
 # Summary
 
-This repository contains Node and Tree classes to create and explore a balanced binary search tree.
+This was a student project from 2022. This repository contains Node and Tree classes to create and explore a balanced binary search tree.
 
 # Methods
 
